@@ -1,10 +1,13 @@
-#include <iostream>
+#include "clock.h"
 
-int countdown(float initial, int increment) {
-	while(initial) {
-		initial -= 0.001;
-		nanosleep(1000000);
-	}
+int chessClock(void) {
+	double blackTime = 0;
+	double whiteTime = 0;
 
-	return initial;
+	return EXIT_SUCCESS;
 }
+
+int countdown(float time) {
+	return time - TIME_STEP;
+}
+
