@@ -1,9 +1,18 @@
 #include "clock.h"
 
 bool whoseTurn = false;
+double blackTime = 0;
+double whiteTime = 0;
+double increment = 0;
 
 void signalHandler(int sigNum) {	//change whose turn it is (SIGUSR1)
 	whoseTurn = !whoseTurn;
+
+	if(whoseTurn == 0) {	//if black moved, add time to white
+		blackTime += increment;
+	} else {
+		whiteTime += increment;
+	}
 }
 
 int countdown(float time) {
@@ -11,8 +20,6 @@ int countdown(float time) {
 }
 
 int chessClock(void) {
-	double blackTime = 0;
-	double whiteTime = 0;
 	
 	//TODO: get values for black and white times
 	
