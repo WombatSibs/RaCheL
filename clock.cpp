@@ -10,9 +10,16 @@ int chessClock(void) {
 
 	//TODO: get values for black and white times
 	
-	//TODO: calculate new values
-	
 	signal(SIGUSR1, signalHandler);
+
+	while(true) {
+		switch(whoseTurn) {
+			case 0:
+				break;
+			case 1:
+				break;
+		}
+	}
 
 	return EXIT_SUCCESS;
 }
