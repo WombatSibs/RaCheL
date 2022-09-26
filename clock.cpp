@@ -1,12 +1,18 @@
 #include "clock.h"
 
+bool whoseTurn = false;
+
+void signalHandler(int sigNum) {	//change whose turn it is (SIGUSR1)
+	whoseTurn = !whoseTurn;
+}
+
 int chessClock(void) {
-	double blackTime = 0;
-	double whiteTime = 0;
 
 	//TODO: get values for black and white times
 	
 	//TODO: calculate new values
+	
+	signal(SIGUSR1, signalHandler);
 
 	return EXIT_SUCCESS;
 }
