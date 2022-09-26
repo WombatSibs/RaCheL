@@ -8,20 +8,22 @@ double increment = 0;
 void signalHandler(int sigNum) {	//change whose turn it is (SIGUSR1)
 	whoseTurn = !whoseTurn;
 
-	if(whoseTurn == 0) {	//if black moved, add time to white
+	if(whoseTurn == 0) {		//if black moved, add time to white
 		blackTime += increment;
 	} else {
 		whiteTime += increment;
 	}
 }
 
-int countdown(float time) {
+int countdown(float time) {		//decrese time by TIME_STEP
 	return time - TIME_STEP;
 }
 
 int chessClock(void) {
-	
-	//TODO: get values for black and white times
+	blackTime = getTime();
+	whiteTime = getTime();
+	increment = getIncrement();
+	struct timespec sec, nsec = {ZERO_SEC, ONE_MILLISEC};
 	
 	signal(SIGUSR1, signalHandler);
 
@@ -34,6 +36,7 @@ int chessClock(void) {
 				countdown(blackTime);
 				break;
 		}
+		nanosleep(&sec, &nsec);	//1 millisecond?
 	}
 
 	return EXIT_SUCCESS;
