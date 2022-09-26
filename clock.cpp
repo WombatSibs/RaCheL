@@ -15,7 +15,7 @@ void signalHandler(int sigNum) {	//change whose turn it is (SIGUSR1)
 	}
 }
 
-int countdown(float time) {		//decrese time by TIME_STEP
+int countdown(float time) {		//decrease time by TIME_STEP
 	return time - TIME_STEP;
 }
 
