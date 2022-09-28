@@ -5,3 +5,4 @@
 
 #include "clock.h"
 #include "files.h"
+#include "gui.h"

@@ -8,7 +8,8 @@ int main() {
 		case 0:		//switch
 			std::cout<<"child\n";
 			return EXIT_SUCCESS;
-		default:	//clock 
+		default:	//clock
+			createWindow();	
 			chessClock(pid);	//the actual clock
 			wait(NULL);
 			std::cout<<"parent\n";

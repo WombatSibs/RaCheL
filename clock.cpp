@@ -23,9 +23,9 @@ int chessClock(pid_t childPID) {
 	double mutualTime = 0;	
 	struct timespec sec, nsec = {ZERO_SEC, ONE_MILLISEC};
 
-	getTimeAndIncrement(&mutualTime, &increment);	//set time as defined somewhere else I guess
-	blackTime = mutualTime;
-	whiteTime = mutualTime;
+//	getTimeAndIncrement(&mutualTime, &increment);	//set time as defined somewhere else I guess
+//	blackTime = mutualTime;
+//	whiteTime = mutualTime;
 	
 	signal(SIGUSR1, signalHandler);	//receive signals by the switch
 
