@@ -8,40 +8,45 @@ double increment = 0;
 void signalHandler(int sigNum) {	//change whose turn it is (SIGUSR1)
 	whoseTurn = !whoseTurn;
 
-	if(whoseTurn == 0) {		//if black moved, add time to white
+	if(whoseTurn == 0) {		//if white's turn, add time to black
 		blackTime += increment;
+		std::cout << "black: " << blackTime << std::endl;
 	} else {
 		whiteTime += increment;
-	}
+		std::cout << "white: " << whiteTime << std::endl;
+	}	
 }
 
-int countdown(float time) {		//decrease time by TIME_STEP
-	return time - TIME_STEP;
+int countdown(double *time) {		//decrease time by TIME_STEP
+	*time -= TIME_STEP;
+	return EXIT_SUCCESS;
 }
 
 int chessClock(pid_t childPID) {
-	double mutualTime = 0;	
-	struct timespec sec, nsec = {ZERO_SEC, ONE_MILLISEC};
+	double mutualTime = 10;		//TODO: set 0 as default after getTimeAndIncrement was added
+	struct timespec nsec = {ZERO_SEC, ONE_MILLISEC};
 
 //	getTimeAndIncrement(&mutualTime, &increment);	//set time as defined somewhere else I guess
-//	blackTime = mutualTime;
-//	whiteTime = mutualTime;
+	blackTime = mutualTime;
+	whiteTime = mutualTime;
 	
 	signal(SIGUSR1, signalHandler);	//receive signals by the switch
 
 	while(blackTime > 0 && whiteTime > 0) {
 		switch(whoseTurn) {
 			case 0:	//white's turn
-				countdown(whiteTime);
+				countdown(&whiteTime);
+				//std::cout << "white: " << whiteTime << std::endl;
 				break;
 			case 1: //black's turn
-				countdown(blackTime);
+				countdown(&blackTime);
+				//std::cout << "black: " << blackTime << std::endl;
 				break;
 		}
-		nanosleep(&sec, &nsec);	//1 millisecond?
+		nanosleep(&nsec, NULL);	//1 millisecond?
 	}
 
-	//kill(childPID, SIGTERM);	//send SIGTERM to child process (infanticide)
+	kill(childPID, SIGTERM);	//send SIGTERM to child process (infanticide)
 
 	//TODO: Do something with winner or something
 

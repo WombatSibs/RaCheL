@@ -6,7 +6,7 @@ int main(int argc, char **argv) {
 	pid_t pid = fork();
 	switch(pid) {
 		case 0:		//switch
-			std::cout<<"child\n";
+			hardwareSwitch();
 			return EXIT_SUCCESS;
 		default:	//clock
 			//glutInit(&argc, argv);
@@ -14,7 +14,6 @@ int main(int argc, char **argv) {
 			//glutMainLoop();
 			chessClock(pid);	//the actual clock
 			wait(NULL);
-			std::cout<<"parent\n";
 			return EXIT_SUCCESS;
 	}
 }
