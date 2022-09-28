@@ -2,6 +2,9 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <unistd.h>
+#include <GL/freeglut.h>
 
 #include "clock.h"
 #include "files.h"
+#include "gui.h"
+#include "hardwareSwitch.h"

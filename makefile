@@ -4,7 +4,7 @@ CC = c++
 all: main
 
 main: main.cpp
-	$(CC) $(CFLAGS) -o main main.cpp clock.cpp
+	$(CC) $(CFLAGS) -o main main.cpp clock.cpp hardwareSwitch.cpp
 
 clean:
 	rm –f ./main

@@ -3,6 +3,7 @@
 #include <time.h>
 
 #include "files.h"
+#include "gui.h"
 
 #define TIME_STEP 0.001
 
