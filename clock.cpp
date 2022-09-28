@@ -23,10 +23,10 @@ int countdown(double *time) {		//decrease time by TIME_STEP
 }
 
 int chessClock(pid_t childPID) {
-	double mutualTime = 10;		//TODO: set 0 as default after getTimeAndIncrement was added
+	double mutualTime = 0;
 	struct timespec nsec = {ZERO_SEC, ONE_MILLISEC};
 
-//	getTimeAndIncrement(&mutualTime, &increment);	//set time as defined somewhere else I guess
+	getTimeAndIncrement(&mutualTime, &increment);	//set time as defined somewhere else I guess
 	blackTime = mutualTime;
 	whiteTime = mutualTime;
 	
