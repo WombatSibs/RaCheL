@@ -41,7 +41,7 @@ int chessClock(pid_t childPID) {
 		nanosleep(&sec, &nsec);	//1 millisecond?
 	}
 
-	kill(childPID, SIGTERM);	//send SIGTERM to child process (infanticide)
+	//kill(childPID, SIGTERM);	//send SIGTERM to child process (infanticide)
 
 	//TODO: Do something with winner or something
 

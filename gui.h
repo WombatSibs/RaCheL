@@ -1,3 +1,3 @@
 #include <GL/freeglut.h>
 
-int createWindow();
+int createWindow(void);
