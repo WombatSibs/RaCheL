@@ -8,4 +8,4 @@
 
 enum {ZERO_SEC = 0, ONE_MILLISEC = 1000000};
 
-int chessClock(void);
+int chessClock(pid_t childPID);

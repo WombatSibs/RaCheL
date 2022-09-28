@@ -19,13 +19,15 @@ int countdown(float time) {		//decrease time by TIME_STEP
 	return time - TIME_STEP;
 }
 
-int chessClock(void) {
-	blackTime = getTime();
-	whiteTime = getTime();
-	increment = getIncrement();
+int chessClock(pid_t childPID) {
+	double mutualTime = 0;	
 	struct timespec sec, nsec = {ZERO_SEC, ONE_MILLISEC};
+
+	getTimeAndIncrement(&mutualTime, &increment);	//set time as defined somewhere else I guess
+	blackTime = mutualTime;
+	whiteTime = mutualTime;
 	
-	signal(SIGUSR1, signalHandler);
+	signal(SIGUSR1, signalHandler);	//receive signals by the switch
 
 	while(blackTime > 0 && whiteTime > 0) {
 		switch(whoseTurn) {
@@ -38,6 +40,10 @@ int chessClock(void) {
 		}
 		nanosleep(&sec, &nsec);	//1 millisecond?
 	}
+
+	kill(childPID, SIGTERM);	//send SIGTERM to child process (infanticide)
+
+	//TODO: Do something with winner or something
 
 	return EXIT_SUCCESS;
 }

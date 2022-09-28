@@ -9,7 +9,7 @@ int main() {
 			std::cout<<"child\n";
 			return EXIT_SUCCESS;
 		default:	//clock 
-			chessClock();	//the actual clock
+			chessClock(pid);	//the actual clock
 			wait(NULL);
 			std::cout<<"parent\n";
 			return EXIT_SUCCESS;

@@ -1,5 +1,3 @@
 #include <iostream>
 
-double getTime();
-
-double getIncrement();
+double getTimeAndIncrement(double *time, double *increment);
