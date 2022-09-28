@@ -1,7 +1,4 @@
-#include <iostream>
-#include <fstream>
-#include <string>
-using namespace std;
+#include "files.h"
 
 int listenSwitch() // reads value of switch (0 or 1) from file 'switch_value'
 {
@@ -22,7 +19,7 @@ string getMode() // reads name of mode from file 'current_mode'
 {
     string mode;
     ifstream current_mode_file;
-    current_mode_file.open("io/current_mode");
+    current_mode_file.open("io/current_mode");		//TODO: ERROR!!!
     if (current_mode_file.is_open())
     { 
         current_mode_file >> mode; //read("switch_value");
@@ -46,12 +43,14 @@ int writeTimes(double white, double black) // writes out the times for white and
     return EXIT_SUCCESS;
 }
 
-int getTimeAndIncrement(string mode, double* time, double* increment) // checks if reads from file 'possible_modes' and 
+int getTimeAndIncrement(string mode, double* time, double* increment) // checks if reads from file 'possible_modes' and ???
 {
     string line;
     ifstream modes_file;
     bool found_mode;
+
     modes_file.open("io/possible_modes");
+
     if (modes_file.is_open())
     {
         string possible_mode;
@@ -81,7 +80,8 @@ int getTimeAndIncrement(string mode, double* time, double* increment) // checks 
         }
         modes_file.close();
     } else {
-        cout << "[ERROR]: Could not open file 'possible_modes'" << endl;
+        cerr << "[ERROR]: Could not open file 'possible_modes'" << endl;
+	return EXIT_FAILURE;
     }
     if (!found_mode)
     {
@@ -91,7 +91,7 @@ int getTimeAndIncrement(string mode, double* time, double* increment) // checks 
 }
 
 // just for testing:
-int main()
+/*int main()
 {
     double time;
     double increment;
@@ -103,4 +103,5 @@ int main()
     cout << "Time in Seconds: " << time << endl;
     cout << "Increment in Seconds: " << increment << endl;
 }
+*/
 

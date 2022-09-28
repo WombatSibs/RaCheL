@@ -26,11 +26,15 @@ int chessClock(pid_t childPID) {
 	double mutualTime = 0;
 	struct timespec nsec = {ZERO_SEC, ONE_MILLISEC};
 
-	getTimeAndIncrement(&mutualTime, &increment);	//set time as defined somewhere else I guess
-	blackTime = mutualTime;
-	whiteTime = mutualTime;
+	int getTime = getTimeAndIncrement(getMode(), &mutualTime, &increment);	//set time as defined somewhere else I guess
+	if (getTime == 0) {
+		blackTime = mutualTime;
+		whiteTime = mutualTime;
+	}
+	std::cout << "time: " << mutualTime << std::endl;
+	std::cout << "increment: " << increment << std::endl;
 	
-	signal(SIGUSR1, signalHandler);	//receive signals by the switch
+	//signal(SIGUSR1, signalHandler);	//receive signals by the switch
 
 	while(blackTime > 0 && whiteTime > 0) {
 		switch(whoseTurn) {

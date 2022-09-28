@@ -1,3 +1,9 @@
 #include <iostream>
+#include <string>
+#include <fstream>
 
-double getTimeAndIncrement(double *time, double *increment);
+using namespace std;
+
+string getMode();
+
+int getTimeAndIncrement(string mode, double *time, double *increment);
