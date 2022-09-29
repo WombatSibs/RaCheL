@@ -19,11 +19,9 @@ string getMode() // reads name of mode from file 'current_mode'
 {
     string mode;
     ifstream current_mode_file;
-    current_mode_file.open("io/current_mode");		//TODO: ERROR!!!
-    cout << "vor if" << endl;
+    current_mode_file.open("io/current_mode");
     if (current_mode_file.is_open())
     { 
-        cout << "in if" << endl;
         current_mode_file >> mode; //read("switch_value");
     } else {
         cerr << "[ERROR]: Could not open file 'current_mode'" << endl;
@@ -48,17 +46,14 @@ int writeTimes(double white, double black) // writes out the times for white and
 
 int getTimeAndIncrement(string mode, double* time, double* increment) // checks if reads from file 'possible_modes' and ???
 {
-    cout << "Anfang getTimeAndIncrement" << endl;
     string line;
     ifstream modes_file;
     bool found_mode;
 
     modes_file.open("io/possible_modes");
-    cout << "nach oeffnen" << endl;
 
     if (modes_file.is_open())
     {
-        cout << "anfang anfang if" << endl;
         string possible_mode;
         string h_str;
         string m_str;
@@ -67,13 +62,9 @@ int getTimeAndIncrement(string mode, double* time, double* increment) // checks 
         double minutes;
         double seconds;
 
-        cout << "Anfang if" << endl;
-
         getline(modes_file, line);  // ignore first line 
-        cout << "erste ignorierte Zeile: " << line << endl;
         while (modes_file >> possible_mode) //getline(modes_file, line))
         {
-            cout << "Anfang while" << endl;
             getline(modes_file, h_str, ':');
             getline(modes_file, m_str, ':');
             getline(modes_file, s_str, ' ');
