@@ -69,8 +69,8 @@ int getTimeAndIncrement(string mode, double* time, double* increment) // checks 
             getline(modes_file, m_str, ':');
             getline(modes_file, s_str, ' ');
             modes_file >> *increment;
-            cout << "read possible mode: " << possible_mode << endl;
-            cout << "read possible time: " << h_str << ':' << m_str << ':' << s_str << '\n';
+            //cout << "read possible mode: " << possible_mode << endl;
+            //cout << "read possible time: " << h_str << ':' << m_str << ':' << s_str << '\n';
             if (possible_mode == mode)
             {
                 found_mode = true;
@@ -80,8 +80,8 @@ int getTimeAndIncrement(string mode, double* time, double* increment) // checks 
                 *time = 60 * 60 * hours + 60 * minutes + seconds;
                 break;
             }
-            cout << "time matching chosen mode in seconds: " << time << '\n';
-            cout << "increment: " << increment << endl;
+            //cout << "time matching chosen mode in seconds: " << time << '\n';
+            //cout << "increment: " << increment << endl;
         }
     } else {
         cerr << "[ERROR]: Could not open file 'possible_modes'" << endl;

@@ -10,10 +10,10 @@ void signalHandler(int sigNum) {	//change whose turn it is (SIGUSR1)
 
 	if(whoseTurn == 0) {		//if white's turn, add time to black
 		blackTime += increment;
-		std::cout << "black: " << blackTime << std::endl;
+		//std::cout << "black: " << blackTime << std::endl;
 	} else {
 		whiteTime += increment;
-		std::cout << "white: " << whiteTime << std::endl;
+		//std::cout << "white: " << whiteTime << std::endl;
 	}	
 }
 
@@ -22,7 +22,7 @@ int countdown(double *time) {		//decrease time by TIME_STEP
 	return EXIT_SUCCESS;
 }
 
-int chessClock(pid_t childPID) {
+int chessClock(pid_t childPID, char **argv) {
 	double mutualTime = 0;
 	struct timespec nsec = {ZERO_SEC, ONE_MILLISEC};
 
@@ -36,9 +36,6 @@ int chessClock(pid_t childPID) {
             kill(childPID, SIGTERM);
             return EXIT_FAILURE;
         }
-
-	std::cout << "time: " << mutualTime << std::endl;
-	std::cout << "increment: " << increment << std::endl;
 	
 	signal(SIGUSR1, signalHandler);	//receive signals by the switch
 	kill(childPID, SIGUSR2);	//tell child that signals can be sent
@@ -55,7 +52,10 @@ int chessClock(pid_t childPID) {
 				break;
 		}
 		nanosleep(&nsec, NULL);	//1 millisecond?
+
+		cout << "\rWhite: " << whiteTime << "\tBlack: " << blackTime;
 	}
+	cout << endl;
 
 	kill(childPID, SIGTERM);	//send SIGTERM to child process (infanticide)
 

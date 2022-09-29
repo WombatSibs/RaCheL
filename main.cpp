@@ -16,7 +16,7 @@ int main(int argc, char **argv) {
 			//glutInit(&argc, argv);
 			//createWindow();
 			//glutMainLoop();
-			chessClock(pid);	//the actual clock
+			chessClock(pid, argv);	//the actual clock
 			wait(NULL);
 			return EXIT_SUCCESS;
 	}
