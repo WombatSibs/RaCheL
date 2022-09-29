@@ -1,6 +1,4 @@
 # RaCheL
 Raspberry Pi Chess Clock
 
-*visible confusion*
-
-**more visible confusion**
+This project provides the necessary software and hardware-wiring-schematics that are absolutely essential for running a (hopefully) functional chess clock on a Raspberry Pi.
