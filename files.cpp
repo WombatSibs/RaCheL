@@ -91,16 +91,17 @@ int getTimeAndIncrement(string mode, double* time, double* increment) // checks 
 }
 
 // just for testing:
-int main()
-{
-    double time;
-    double increment;
-    string name = getMode();
-    int switch_value;
-    switch_value = listenSwitch();
-    cout << "Switch value: " << switch_value << endl;
-    getTimeAndIncrement(name, &time, &increment);
-    cout << "Time in Seconds: " << time << endl;
-    cout << "Increment in Seconds: " << increment << endl;
-}
+//int main()
+//{
+//    double time;
+//    double increment;
+//    string name = getMode();
+//    cout << name << endl;
+//    int switch_value;
+//    switch_value = listenSwitch();
+//    cout << "Switch value: " << switch_value << endl;
+//    getTimeAndIncrement(name, &time, &increment);
+//    cout << "Time in Seconds: " << time << endl;
+//    cout << "Increment in Seconds: " << increment << endl;
+//}
 
