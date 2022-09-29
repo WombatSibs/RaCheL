@@ -25,12 +25,18 @@ int countdown(double *time) {		//decrease time by TIME_STEP
 int chessClock(pid_t childPID) {
 	double mutualTime = 0;
 	struct timespec nsec = {ZERO_SEC, ONE_MILLISEC};
-
-	int getTime = getTimeAndIncrement(getMode(), &mutualTime, &increment);	//set time as defined somewhere else I guess
+        std::cout << "TEST" << '\n';
+        string mode = getMode();
+        std::cout << mode << '\n';
+	int getTime = getTimeAndIncrement(mode, &mutualTime, &increment);	//set time as defined somewhere else I guess
 	if (getTime == 0) {
 		blackTime = mutualTime;
 		whiteTime = mutualTime;
-	}
+	} else {
+            cerr << "[ERROR] could not get time" << endl;
+            kill(childPID, SIGTERM);
+            return EXIT_FAILURE;
+        }
 	std::cout << "time: " << mutualTime << std::endl;
 	std::cout << "increment: " << increment << std::endl;
 	

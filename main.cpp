@@ -3,6 +3,10 @@
 int main(int argc, char **argv) {
 	std::cout<<"Chess Clock Thingy\n";
 
+        std::string modetest;
+        modetest = getMode();
+        std::cout << modetest << '\n';
+
 	pid_t pid = fork();
 	switch(pid) {
 		case 0:		//switch
