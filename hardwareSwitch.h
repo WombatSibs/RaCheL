@@ -3,5 +3,6 @@
 #include <time.h>
 #include <sys/types.h>
 #include <unistd.h>
+#include <wiringPi.h>
 
 int hardwareSwitch();
