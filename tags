@@ -7,18 +7,38 @@
 !_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
 !_TAG_PROGRAM_URL	https://ctags.io/	/official site/
 !_TAG_PROGRAM_VERSION	0.0.0	//
+allowSignals	hardwareSwitch.cpp	/^void allowSignals(int sigNum) {$/;"	f	typeref:typename:void
+b_str	gui.py	/^    b_str = time_format.format(hours = int(b_time\/\/3600),$/;"	v
+b_time	gui.py	/^    b_time = float(b_file.readline())$/;"	v
 blackTime	clock.cpp	/^double blackTime = 0;$/;"	v	typeref:typename:double
-chessClock	clock.cpp	/^int chessClock(pid_t childPID) {$/;"	f	typeref:typename:int
+black_frame	gui.py	/^black_frame = tk.Frame(window, bg='#000000', height=win_height,$/;"	v
+black_label	gui.py	/^black_label = tk.Label(black_frame, text= b_str, font=(font, fontsize),$/;"	v
+chessClock	clock.cpp	/^int chessClock(pid_t childPID, char **argv) {$/;"	f	typeref:typename:int
 countdown	clock.cpp	/^int countdown(double *time) {		\/\/decrease time by TIME_STEP$/;"	f	typeref:typename:int
 createWindow	gui.cpp	/^int createWindow(void) {$/;"	f	typeref:typename:int
 destroyWindow	gui.cpp	/^int destroyWindow() {$/;"	f	typeref:typename:int
+font	gui.py	/^font = 'Arial'$/;"	v
+fontsize	gui.py	/^fontsize = 70$/;"	v
 getMode	files.cpp	/^string getMode() \/\/ reads name of mode from file 'current_mode'$/;"	f	typeref:typename:string
 getTimeAndIncrement	files.cpp	/^int getTimeAndIncrement(string mode, double* time, double* increment) \/\/ checks if reads from /;"	f	typeref:typename:int
 hardwareSwitch	hardwareSwitch.cpp	/^int hardwareSwitch() {	\/\/dummy switch$/;"	f	typeref:typename:int
 increment	clock.cpp	/^double increment = 0;$/;"	v	typeref:typename:double
 listenSwitch	files.cpp	/^int listenSwitch() \/\/ reads value of switch (0 or 1) from file 'switch_value'$/;"	f	typeref:typename:int
 main	main.cpp	/^int main(int argc, char **argv) {$/;"	f	typeref:typename:int
+padx	gui.py	/^padx = 0$/;"	v
+pady	gui.py	/^pady = win_height\/2 - fontsize$/;"	v
+sendable	hardwareSwitch.cpp	/^bool sendable = false;$/;"	v	typeref:typename:bool
 signalHandler	clock.cpp	/^void signalHandler(int sigNum) {	\/\/change whose turn it is (SIGUSR1)$/;"	f	typeref:typename:void
+time_format	gui.py	/^time_format = "{hours:02}:{minutes:02}:{seconds:06.3f}"$/;"	v
+tk	gui.py	/^import tkinter as tk$/;"	I
+w_str	gui.py	/^    w_str = time_format.format(hours = int(w_time\/\/3600),$/;"	v
+w_time	gui.py	/^    w_time = float(w_file.readline())$/;"	v
 whiteTime	clock.cpp	/^double whiteTime = 0;$/;"	v	typeref:typename:double
+white_frame	gui.py	/^white_frame = tk.Frame(window) #, height=frameheight, width=framewidth)$/;"	v
+white_label	gui.py	/^white_label = tk.Label(white_frame, text= w_str, font=(font, fontsize))$/;"	v
 whoseTurn	clock.cpp	/^bool whoseTurn = false;$/;"	v	typeref:typename:bool
+win_geom	gui.py	/^win_geom = '{}x{}'.format(win_width, win_height)$/;"	v
+win_height	gui.py	/^win_height = 400$/;"	v
+win_width	gui.py	/^win_width = 1500$/;"	v
+window	gui.py	/^window = tk.Tk()   # initialize new window$/;"	v
 writeTimes	files.cpp	/^int writeTimes(double white, double black) \/\/ writes out the times for white and black into th/;"	f	typeref:typename:int
