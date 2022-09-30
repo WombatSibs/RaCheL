@@ -1,0 +1,24 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	//
+blackTime	clock.cpp	/^double blackTime = 0;$/;"	v	typeref:typename:double
+chessClock	clock.cpp	/^int chessClock(pid_t childPID) {$/;"	f	typeref:typename:int
+countdown	clock.cpp	/^int countdown(double *time) {		\/\/decrease time by TIME_STEP$/;"	f	typeref:typename:int
+createWindow	gui.cpp	/^int createWindow(void) {$/;"	f	typeref:typename:int
+destroyWindow	gui.cpp	/^int destroyWindow() {$/;"	f	typeref:typename:int
+getMode	files.cpp	/^string getMode() \/\/ reads name of mode from file 'current_mode'$/;"	f	typeref:typename:string
+getTimeAndIncrement	files.cpp	/^int getTimeAndIncrement(string mode, double* time, double* increment) \/\/ checks if reads from /;"	f	typeref:typename:int
+hardwareSwitch	hardwareSwitch.cpp	/^int hardwareSwitch() {	\/\/dummy switch$/;"	f	typeref:typename:int
+increment	clock.cpp	/^double increment = 0;$/;"	v	typeref:typename:double
+listenSwitch	files.cpp	/^int listenSwitch() \/\/ reads value of switch (0 or 1) from file 'switch_value'$/;"	f	typeref:typename:int
+main	main.cpp	/^int main(int argc, char **argv) {$/;"	f	typeref:typename:int
+signalHandler	clock.cpp	/^void signalHandler(int sigNum) {	\/\/change whose turn it is (SIGUSR1)$/;"	f	typeref:typename:void
+whiteTime	clock.cpp	/^double whiteTime = 0;$/;"	v	typeref:typename:double
+whoseTurn	clock.cpp	/^bool whoseTurn = false;$/;"	v	typeref:typename:bool
+writeTimes	files.cpp	/^int writeTimes(double white, double black) \/\/ writes out the times for white and black into th/;"	f	typeref:typename:int
