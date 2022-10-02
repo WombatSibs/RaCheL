@@ -15,29 +15,28 @@ int hardwareSwitch() {	//dummy switch
 	struct timespec nsec = {1, 10000000};
 
 	ifstream switchMode;
-	switchMode.open("io/switch_value");
 
-	if(switchMode.is_open()) {
-		switchMode >> fileInput;
-	} else {
-		cerr << "[ERROR]: File not found!" << endl;
-		return EXIT_FAILURE;
+	while(!sendable) {
+		signal(SIGUSR2, allowSignals);
 	}
-
-	signal(SIGUSR2, allowSignals);
 
 //	wiringPiSetup();
 //	pinMode(0, INPUT);
 
 	while(sendable) {
+		switchMode.open("io/switch_value");
+
 		//gpioInput = digitalRead(0);
 		switchMode >> fileInput;
+
 		if(fileInput != prevFileInput || gpioInput != prevGpioInput) {
 			kill(getppid(), SIGUSR1);
 			nanosleep(&nsec, NULL);
 		}
 		prevGpioInput = gpioInput;
 		prevFileInput = fileInput;
+
+		switchMode.close();
 	}
 
 	return EXIT_SUCCESS;
