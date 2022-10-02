@@ -3,6 +3,9 @@
 #include <time.h>
 #include <sys/types.h>
 #include <unistd.h>
-#include <wiringPi.h>
+#include <fstream>
+//#include <wiringPi.h>
+
+using namespace std;
 
 int hardwareSwitch();
