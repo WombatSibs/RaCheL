@@ -6,7 +6,7 @@ int main(int argc, char **argv) {
 	wiringPiSetup();
 	pinMode(2, INPUT);
 
-	chessClock(pid, argv);	//the actual clock
+	chessClock(argv);	//the actual clock
 	return EXIT_SUCCESS;
 	
 }

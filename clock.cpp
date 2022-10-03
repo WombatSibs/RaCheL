@@ -6,7 +6,7 @@ int countdown(double *time) {		//decrease time by TIME_STEP
 	return EXIT_SUCCESS;
 }
 
-int chessClock(pid_t childPID, char **argv) {
+int chessClock(char **argv) {
 	bool gpioInput = 0;
 	bool fileInput = 0;
 	bool prevGpioInput = 0;
@@ -14,6 +14,7 @@ int chessClock(pid_t childPID, char **argv) {
 	bool whoseTurn = 0;
 	double whiteTime = 0;
 	double blackTime = 0;
+	double increment = 0;
 	double mutualTime = 0;
 	struct timespec nsec = {ZERO_SEC, ONE_MILLISEC};
 	ifstream switchMode;

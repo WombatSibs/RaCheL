@@ -13,4 +13,4 @@ using namespace std;
 
 enum {ZERO_SEC = 0, ONE_MILLISEC = 1000000};
 
-int chessClock(pid_t childPID, char **argv);
+int chessClock(char **argv);
