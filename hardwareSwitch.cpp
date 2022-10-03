@@ -16,18 +16,24 @@ int hardwareSwitch() {	//dummy switch
 
 	ifstream switchMode;
 
+	cout << "1" << endl;
+
 	while(!sendable) {
 		signal(SIGUSR2, allowSignals);
 	}
 
 //	wiringPiSetup();
-//	pinMode(0, INPUT);
+//	pinMode(2, INPUT);
+
+	cout << "2" << endl;
 
 	while(sendable) {
 		switchMode.open("io/switch_value");
 
-		//gpioInput = digitalRead(0);
+		gpioInput = digitalRead(2);
 		switchMode >> fileInput;
+
+		cout << gpioInput << endl;
 
 		if(fileInput != prevFileInput || gpioInput != prevGpioInput) {
 			kill(getppid(), SIGUSR1);

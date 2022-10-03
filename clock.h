@@ -1,6 +1,7 @@
 #include <iostream>
 #include <signal.h>
 #include <time.h>
+#include <wiringPi.h>
 
 #include "files.h"
 //#include "gui.h"

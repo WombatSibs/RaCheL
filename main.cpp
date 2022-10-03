@@ -7,6 +7,9 @@ int main(int argc, char **argv) {
         modetest = getMode();
         std::cout << modetest << '\n';
 
+	wiringPiSetup();
+	pinMode(2, INPUT);
+
 	pid_t pid = fork();
 	switch(pid) {
 		case 0:		//switch

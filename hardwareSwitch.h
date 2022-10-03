@@ -4,7 +4,9 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include <fstream>
-//#include <wiringPi.h>
+extern "C" {
+#include <wiringPi.h>
+}
 
 using namespace std;
 

@@ -3,6 +3,7 @@
 #include <sys/wait.h>
 #include <unistd.h>
 //#include <GL/freeglut.h>
+#include <wiringPi.h>
 
 #include "clock.h"
 #include "files.h"

@@ -41,6 +41,9 @@ int chessClock(pid_t childPID, char **argv) {
 	kill(childPID, SIGUSR2);	//tell child that signals can be sent
 
 	while(blackTime > 0 && whiteTime > 0) {
+
+		whoseTurn = digitalRead(2);
+
 		switch(whoseTurn) {
 			case 0:	//white's turn
 				countdown(&whiteTime);
