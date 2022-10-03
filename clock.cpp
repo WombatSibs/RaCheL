@@ -30,6 +30,7 @@ int chessClock(char **argv) {
         }
 
 	while(blackTime > 0 && whiteTime > 0) {
+		switchMode.open("io/switch_value");
 
 		gpioInput = digitalRead(2);
 		switchMode >> fileInput;
@@ -58,10 +59,10 @@ int chessClock(char **argv) {
 		prevFileInput = fileInput;
 
 		cout << "\rWhite: " << whiteTime << "\tBlack: " << blackTime;
+
+		switchMode.close();
 	}
 	cout << endl;
-
-	switchMode.close();
 
 
 	//TODO: Do something with the winner or something
