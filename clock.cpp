@@ -8,7 +8,7 @@ int countdown(double *time) {		//decrease time by TIME_STEP
 
 int chessClock(char **argv) {
 	bool gpioInput = 0;
-	bool fileInput = 0;
+	bool fileInput = 0;	//TODO: add space bar as second option for switch
 	bool prevGpioInput = 0;
 	bool prevFileInput = 0;
 	bool whoseTurn = 0;
@@ -29,16 +29,16 @@ int chessClock(char **argv) {
             return EXIT_FAILURE;
         }
 
-	while(blackTime > 0 && whiteTime > 0) {
+	while(blackTime > 0 && whiteTime > 0) {	//repeat until timeout
 		switchMode.open("io/switch_value");
 
-		gpioInput = digitalRead(2);
+		gpioInput = digitalRead(2);	//update switch value variables
 		switchMode >> fileInput;
 
 		if(gpioInput != prevGpioInput || fileInput != prevFileInput) {	//switch is pressed, other player's turn
 			whoseTurn = !whoseTurn;
 
-			if(whoseTurn == 0) {
+			if(whoseTurn == 0) {	//if white's turn, black gets increment and vice versa
 				blackTime += increment;
 			} else {
 				whiteTime += increment;
@@ -53,7 +53,7 @@ int chessClock(char **argv) {
 				countdown(&blackTime);
 				break;
 		}
-		nanosleep(&nsec, NULL);	//1 millisecond?
+		nanosleep(&nsec, NULL);	//1 millisecond? (i think)
 		
 		prevGpioInput = gpioInput;
 		prevFileInput = fileInput;
