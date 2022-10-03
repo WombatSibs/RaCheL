@@ -53,6 +53,7 @@ int chessClock(char **argv) {
 				countdown(&blackTime);
 				break;
 		}
+		writeTimes(whiteTime, blackTime);
 		nanosleep(&nsec, NULL);	//1 millisecond? (i think)
 		
 		prevGpioInput = gpioInput;
