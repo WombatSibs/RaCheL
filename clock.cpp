@@ -1,21 +1,5 @@
 #include "clock.h"
 
-bool whoseTurn = false;
-double blackTime = 0;
-double whiteTime = 0;
-double increment = 0;
-
-void signalHandler(int sigNum) {	//change whose turn it is (SIGUSR1)
-	whoseTurn = !whoseTurn;
-
-	if(whoseTurn == 0) {		//if white's turn, add time to black
-		blackTime += increment;
-		//std::cout << "black: " << blackTime << std::endl;
-	} else {
-		whiteTime += increment;
-		//std::cout << "white: " << whiteTime << std::endl;
-	}	
-}
 
 int countdown(double *time) {		//decrease time by TIME_STEP
 	*time -= TIME_STEP;
@@ -23,8 +7,16 @@ int countdown(double *time) {		//decrease time by TIME_STEP
 }
 
 int chessClock(pid_t childPID, char **argv) {
+	bool gpioInput = 0;
+	bool fileInput = 0;
+	bool prevGpioInput = 0;
+	bool prevFileInput = 0;
+	bool whoseTurn = 0;
+	double whiteTime = 0;
+	double blackTime = 0;
 	double mutualTime = 0;
 	struct timespec nsec = {ZERO_SEC, ONE_MILLISEC};
+	ifstream switchMode;
 
         string mode = getMode();
 	int getTime = getTimeAndIncrement(mode, &mutualTime, &increment);	//set time as defined somewhere else I guess
@@ -33,36 +25,45 @@ int chessClock(pid_t childPID, char **argv) {
 		whiteTime = mutualTime;
 	} else {
             cerr << "[ERROR] could not get time" << endl;
-            kill(childPID, SIGTERM);
             return EXIT_FAILURE;
         }
-	
-	signal(SIGUSR1, signalHandler);	//receive signals by the switch
-	kill(childPID, SIGUSR2);	//tell child that signals can be sent
 
 	while(blackTime > 0 && whiteTime > 0) {
 
-		whoseTurn = digitalRead(2);
+		gpioInput = digitalRead(2);
+		switchMode >> fileInput;
+
+		if(gpioInput != prevGpioInput || fileInput != prevFileInput) {	//switch is pressed, other player's turn
+			whoseTurn = !whoseTurn;
+
+			if(whoseTurn == 0) {
+				blackTime += increment;
+			} else {
+				whiteTime += increment;
+			}
+		}
 
 		switch(whoseTurn) {
 			case 0:	//white's turn
 				countdown(&whiteTime);
-				//std::cout << "white: " << whiteTime << std::endl;
 				break;
 			case 1: //black's turn
 				countdown(&blackTime);
-				//std::cout << "black: " << blackTime << std::endl;
 				break;
 		}
 		nanosleep(&nsec, NULL);	//1 millisecond?
+		
+		prevGpioInput = gpioInput;
+		prevFileInput = fileInput;
 
 		cout << "\rWhite: " << whiteTime << "\tBlack: " << blackTime;
 	}
 	cout << endl;
 
-	kill(childPID, SIGTERM);	//send SIGTERM to child process (infanticide)
+	switchMode.close();
 
-	//TODO: Do something with winner or something
+
+	//TODO: Do something with the winner or something
 
 	return EXIT_SUCCESS;
 }
