@@ -12,9 +12,9 @@ Attach the switch to the other wire and connect the other side of the switch to 
 In the end, the result should look something like this:
 
 3.3V----   <br>
->       |   <br>
->       R   <br>
->       |   <br>
+       |   <br>
+       R   <br>
+       |   <br>
 GP02---|   <br>
        |   <br>
        S   <br>
