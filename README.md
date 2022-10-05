@@ -3,13 +3,13 @@ RAspberry pi CHEss cLock
 
 This project provides the necessary software and hardware-wiring-schematics for running a (hopefully) functional chess clock on a Raspberry Pi.
 
-
 The hardware wiring consists of a resistor (we used 12k ohm, reasonable deviation should be fine), a switch and some wires.
 Connect the resistor via a wire to a 3.3V pin.
 On the other side of the resistor, connect another wire, which 'splits' up into two wires.
 Connect one end to a GPIO pin (by default, pin 13 (GPIO 2 according to the wiringPi library) is expected).
 Attach the switch to the other wire and connect the other side of the switch to one of the 'ground' pins.
 In the end, the result should look something like this:
+(NOTE: The schematics make more sense in a raw .txt format)
 
 3.3V----   
        |   
