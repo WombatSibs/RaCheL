@@ -11,15 +11,15 @@ Connect one end to a GPIO pin (by default, pin 13 (GPIO 2 according to the wirin
 Attach the switch to the other wire and connect the other side of the switch to one of the 'ground' pins.
 In the end, the result should look something like this:
 
-3.3V----
-       |
-       R
-       |
-GP02---|
-       |
-       S
-       |
-GRND----
+3.3V----   <br>
+       |   <br>
+       R   <br>
+       |   <br>
+GP02---|   <br>
+       |   <br>
+       S   <br>
+       |   <br>
+GRND----   <br>
 
 where R is a resistor, S a switch and 3.3, G02 and GND the pins.
 We used pins 1 (3.3V), 13 (GPIO) and 39 (ground).
