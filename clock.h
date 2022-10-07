@@ -11,6 +11,6 @@ using namespace std;
 
 #define TIME_STEP 0.001
 
-enum {ZERO_SEC = 0, ONE_MILLISEC = 1000000};
+enum {ZERO_SEC = 0, ONE_MILLISEC = 100000};
 
 int chessClock(char **argv);

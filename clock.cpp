@@ -66,7 +66,7 @@ int chessClock(char **argv) {
 	cout << endl;
 
 
-	if(whiteTime == 0) {
+	if(whiteTime <= 0) {
 		cout << "\aBlack won!" << endl;
 	} else {
 		cout << "\aWhite won!" << endl;
